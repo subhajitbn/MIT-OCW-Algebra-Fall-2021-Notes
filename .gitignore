@@ -55,6 +55,9 @@ acs-*.bib
 # amsthm
 *.thm
 
+# asymptote
+*.asy
+
 # beamer
 *.nav
 *.pre

@@ -1,0 +1,174 @@
+% Inspired by http://www.mit.edu/~lindrew/
+
+\usepackage[utf8]{inputenc}
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=0.8in,right=0.8in,marginparwidth=1.75cm]{geometry} % jakin
+
+%% Useful packages
+\usepackage{amsmath, amsthm, amssymb} %standard
+\usepackage{graphicx} %include images/graphics
+\usepackage{dsfont} %includes some symbols?
+\usepackage{systeme} %system of equations
+\usepackage{enumitem} %bullet points
+\usepackage{tikz} %draw diagrams
+\usepackage{fancyhdr} \pagestyle{fancy} %add headers
+    \rhead{\thepage} %right head is page number
+    \lhead{\leftmark} %left head is the section name
+\usepackage{mathtools}
+\usepackage{xparse}
+\usepackage{bbm} %blackboard fonts
+\usepackage{etoolbox} 
+\usepackage{xcolor}
+\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype} \microtypecontext{spacing=nonfrench} %adjusts spacing
+
+\usepackage{parskip} %skips the paragraph indent?
+\usepackage{stmaryrd} %CS font
+\usepackage{esvect} %lets me use \vv for a vector arrow
+\usepackage[colorlinks=true, allcolors=blue]{hyperref} %makes links blue
+
+% ethan's packages:
+\usepackage{float}
+
+% Subhajit's packages:
+\usepackage{bookmark}
+\usepackage{hyperref}
+
+% new commands
+\newcommand{\by}{\hspace{0.05em}{\times}\hspace{0.05em}}
+\newcommand{\id}{\text{id}}
+
+% Blackboard bold
+\newcommand{\CC}{\mathbb C}
+\newcommand{\EE}{\mathbb E}
+\newcommand{\FF}{\mathbb F}
+\newcommand{\NN}{\mathbb N}
+\newcommand{\QQ}{\mathbb Q}
+\newcommand{\RR}{\mathbb R}
+\newcommand{\ZZ}{\mathbb Z}
+\newcommand{\HH}{\mathbb H}
+
+%18.701
+%\newcommand{\ord}{\text{ord}}
+\DeclareMathOperator{\ord}{ord}
+% \newcommand{\im}{\text{im}}
+\DeclareMathOperator{\im}{im}
+\newcommand{\nsub}{\trianglelefteq}
+\newcommand{\rto}{\longrightarrow}
+\newcommand{\vvv}{\vv{v}}
+\newcommand{\mto}{\longmapsto}
+\newcommand{\spann}{\text{Span}}
+\newcommand{\matnn}{\text{Mat}_{n \by n}}
+
+% \newcommand{\stab}{\text{Stab}}
+% \newcommand{\orbit}{\text{Orbit}}
+% \newcommand{\perm}{\text{Perm}}
+\DeclareMathOperator{\stab}{Stab}
+\DeclareMathOperator{\orbit}{Orbit}
+\DeclareMathOperator{\perm}{Perm}
+\DeclareMathOperator{\proj}{proj}  
+\DeclareMathOperator{\Ker}{ker} 
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\trace}{Tr}
+\newcommand{\bform}{\langle \cdot, \cdot \rangle}
+\DeclareMathOperator{\lie}{Lie}
+
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\usepackage{thmtools}
+\usepackage[framemethod = TikZ]{mdframed}
+\usepackage{tikz-cd}
+
+\usepackage{silence} % for suppressing warnings (thanks, Jason)
+\WarningFilter{mdframed}{You got a bad break}
+\mdfsetup{skipabove=5pt,skipbelow=0pt} %puts space before and after
+
+\mdfsetup{
+	linewidth = 0.3mm,
+	innertopmargin = 2mm,
+	innerbottommargin = 3.5mm,
+	innerleftmargin = 3mm,
+	innerrightmargin = 3mm
+} % adjusts boundaries of boxes
+
+\newcommand{\thmboxstyle}[4]{
+	\mdfdefinestyle{#2}{
+		linecolor = #3,
+		backgroundcolor = #4,
+		nobreak = true
+	}
+	\declaretheoremstyle[
+		headfont = \bfseries\color{#3},
+		mdframed = {style = #2},
+		headpunct = {\\[0.4pt]},
+		postheadspace = {0pt},
+	]{#1}
+}
+
+\definecolor{oran}{HTML}{877AC6}
+
+% four different colors of boxes
+%\thmboxstyle{defbox}{mdredbox}{red}{orange!5}
+%\thmboxstyle{defbox}{mdredbox}{blue!100!red!60!green!60}{blue!30!red!5!green!1}
+\thmboxstyle{defbox}{mdredbox}{blue!110!red!66!green!66}{cyan!2} %cyan definition box
+
+%\thmboxstyle{thmbox}{mdbluebox}{blue!90!red}{cyan!4}
+%\thmboxstyle{thmbox}{mdbluebox}{blue!100!red!100!green!30}{cyan!4!red!1}
+%\thmboxstyle{thmbox}{mdbluebox}{blue!110!red!90!green!45}{blue!12!red!12!green!1} %purple thmbox
+%\thmboxstyle{thmbox}{mdbluebox}{blue!110!red!90!green!45}{purple!6!blue!2} %purple thmbox
+%\thmboxstyle{thmbox}{mdbluebox}{oran}{purple!6!blue!2} %purple thmbox
+\thmboxstyle{thmbox}{mdbluebox}{oran}{blue!30!red!1}
+
+
+%\thmboxstyle{exbox}{mdgreenbox}{green!70!black}{teal!4}
+\thmboxstyle{exbox}{mdgreenbox}{blue!75!red!80!green!120}{teal!4!blue!2}
+%\definecolor{oran}{RGB}{114,104,166}
+
+%\thmboxstyle{exbox}{mdgreenbox}{blue!85!red!85!green!120}{teal!2!blue!2}
+\thmboxstyle{notebox}{mdorangebox}{orange!50!brown}{yellow!5!olive!5}
+
+\declaretheorem[style = thmbox, name = Theorem, numberwithin = section]{theorem}
+\declaretheorem[style = thmbox, name = Lemma, sibling = theorem]{lemma}
+\declaretheorem[style = thmbox, name = Proposition, sibling = theorem]{proposition}
+\declaretheorem[style = thmbox, name = Corollary, sibling = theorem]{corollary}
+\declaretheorem[style = thmbox, name = Conjecture, sibling = theorem]{conjecture}
+\declaretheorem[style = thmbox, name = Algorithm, sibling = theorem]{algorithm}
+
+\declaretheorem[style = thmbox, name = Theorem, numbered = no]{theorem*}
+\declaretheorem[style = thmbox, name = Lemma, numbered = no]{lemma*}
+\declaretheorem[style = thmbox, name = Proposition, numbered = no]{proposition*}
+\declaretheorem[style = thmbox, name = Corollary, numbered = no]{corollary*}
+\declaretheorem[style = thmbox, name = Conjecture, numbered = no]{conjecture*}
+\declaretheorem[style = thmbox, name = Algorithm, numbered = no]{algorithm*}
+
+ \declaretheorem[style = defbox, name = Definition, sibling = theorem]{definition}
+ \declaretheorem[style = defbox, name = Definition, numbered = no]{definition*}
+
+\declaretheorem[style = exbox, name = Example, sibling = theorem]{example}
+\declaretheorem[style = exbox, name = Example, numbered = no]{example*}
+
+\declaretheorem[style = notebox, name = Fact, sibling = theorem]{fact}
+\declaretheorem[style = notebox, name = Fact, numbered = no]{fact*}
+\declaretheorem[style = notebox, name = Note, sibling = theorem]{note}
+\declaretheorem[style = notebox, name = Note, numbered = no]{note*}
+%\declaretheorem[style = notebox, name = Guiding Question, sibling = theorem]{qq}
+\declaretheorem[style = notebox, name = Guiding Question, numbered = no]{qq}
+\declaretheorem[style = plain, name = Answer, numbered = no]{ans}
+\declaretheorem[style = notebox, name = Problem, sibling = theorem]{problem}
+\declaretheorem[style = notebox, name = Problem, numbered = no]{problem*}
+\declaretheorem[style = notebox, name = Exercise, sibling = theorem]{exercise}
+\declaretheorem[style = notebox, name = Exercise, numbered = no]{exercise*}
+%\declaretheorem[style = notebox, name = Resources, sibling = theorem]{fact}
+\declaretheorem[style = notebox, name = Resources, numbered = no]{resources}
+
+\declaretheorem[style = plain, name = Student Question, numbered = no]{question}
+%\declaretheorem[style = plain, name = Question, numbered = no]{question*}
+
+\declaretheorem[style = plain, name = Claim, sibling = theorem]{claim}
+\declaretheorem[style = plain, name = Claim, numbered = no]{claim*}
+
+\def\todo#1{\relax}
